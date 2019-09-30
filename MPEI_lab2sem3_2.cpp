@@ -1,3 +1,8 @@
+#include <iostream>
+#include <stdio.h>
+#include <windows.h>
+
+
 void Zapolnenie(FILE *fin, int **&mas1, int &m, int &n) {
 	//ввод размеров матрицы
 	fscanf(fin, "%d", &m);
