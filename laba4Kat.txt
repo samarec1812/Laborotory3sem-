@@ -1,0 +1,193 @@
+/*Для решения задачи вам нужно ввести строки с помощью функций gets или fgets,
+разбить строку на слова и выбрать нужные
+Обратите внимание, что во всех случаях слова могут разделяться любым (!) количеством символов,
+не относящихся к слову (будем считать, что к слову относятся большие и маленькие латинские буквы и цифры).
+Желательно всю обработку выполнить за один проход строки, хотя это возможно не во всех вариантах.
+Обязательно проверить работу программы на пустой строке и на строке, состоящей только из символов, не относящихся к слову.
+
+Сформировать строку, удалив из каждого слова исходной строки повторяющиеся в нем буквы.*/
+#include <stdio.h>
+#include <windows.h> // SetConsoleOutputCP
+#include <conio.h>   // getch
+
+const int MAXLEN = 50;
+
+//функция формирующая слова
+void createWord (char ch, FILE *fin, int &i, int &end, char slovo[MAXLEN+1]){
+char ch1 = ch;
+	if (strchr(" .,!?:;\n\r\t", ch1) == 0 && !end) {
+		slovo[i] = ch1;  		//добавляем символ в конец текущего слова
+		i++; 					//смещаем индекс
+		ch1 = fgetc(fin);       //считываем новый символ
+		if (feof(fin)) {		//если считан список конца файла
+			end = 1;
+		}
+	return createWord (ch1, fin, i, end, slovo);
+	}
+	else {
+		slovo[i] = '\0';
+	return;           		    //завершаем слово символом конца строки
+	}
+}
+
+//функция ищущая конца файла
+void findEnd (char ch, FILE *fin, FILE *fout, int &i, int &end, char slovo[MAXLEN+1], int &col){
+char ch1 = ch;
+	if (!feof(fin) && !end) {
+		ch1 = fgetc(fin);
+		if (feof(fin)) { 		//если считан список конца файла
+			end = 1;
+		}
+								//если текущий символ - не разделитель (знак или конец строки, табуляция)
+		if (strchr(" .,!?:;\n\r\t", ch1) == 0 && !end) { //т.е. не найдены эти символы
+								//то пока текущий символ удовлетворяет этому условию
+		i = 0; 				    //обнуляем индекс текущего символа в слове
+		createWord (ch1, fin, i, end, slovo);
+		col++; 					//инкрементируем количество считанных слов
+		/*формируем и выводим фразу, содержащую номер слова и само слово*/
+		fprintf(fout, "%3d %s\n", col, slovo); //записываем в файл
+		slovo[0] = '\0'; 		//очищаем slovo
+		}
+		return findEnd(ch1, fin, fout, i, end, slovo, col);
+	}
+	else return;
+}
+
+//функция формирующая строки слова
+void createStr (FILE *fin, FILE *fout){
+	char ch = ' ';   //текущий символ
+	int col = 0;      //количество считанных слов
+	char slovo[MAXLEN+1] = "";   //слово
+	int i, end = 0; //i - индект текущего символа в slovo; end - показатель конца файла
+
+	findEnd (ch, fin, fout, i, end, slovo, col);
+
+/*формируем и выводим запись, содержащую количество всех слов в файле*/
+fprintf(fout, "Всего слов: %d", col);
+fclose (fin);
+fclose (fout);
+return;
+}
+
+//проверка одной буквы
+void bukva (char &ch, char &ch1, int &j, int i, bool &f, char slovo[MAXLEN+1]){
+		if (ch != '\0' && !f) {
+			if (slovo[j] == ch1 && j != i) {
+			  f = true;
+			}
+			ch = slovo[j];
+			j++;
+			return bukva(ch, ch1, j, i, f, slovo);
+		}
+		else return;
+}
+
+//поиск слова
+void findWord (char &ch, char &ch1, bool &f ,int &i, int &c, char slovo[MAXLEN+1], char slovo1[MAXLEN+1]){
+	if (ch1 != '\0') {
+		ch1 = slovo[i];
+		int j = 0;
+			bukva (ch, ch1, j, i, f, slovo);
+		ch = ' ';
+		if (!f) {
+			slovo1[c] = ch1;
+			c++;
+		}
+		f = false;
+		i++;
+	return findWord(ch, ch1, f, i, c, slovo, slovo1);
+	}
+	else return;
+}
+
+//записать слова
+void zapis (char &ch3, int &k, char slovo[MAXLEN+1], char slovo1[MAXLEN+1]){
+	if (ch3 != '\0') {
+		ch3 = slovo1[k];
+		slovo[k] = ch3;
+		k++;
+		return zapis(ch3, k, slovo, slovo1);
+	}
+	else return;
+}
+//обработка слова
+void obrabotka (char slovo[MAXLEN+1]){
+char ch = ' ';
+char ch1 = ' ';
+char ch3 = ' ';
+bool f = false;
+char slovo1[MAXLEN+1];
+int i = 0, c = 0;
+	findWord (ch, ch1, f, i, c, slovo, slovo1);
+int k=0;
+    zapis (ch3, k, slovo, slovo1);
+	k++;
+	slovo[k] += '\0';
+return;
+}
+
+void findEndl (char ch, FILE *fin, FILE *fout, int &i, int &end, char slovo[MAXLEN+1], int &col){
+char ch1 = ch;
+	if (!feof(fin) && !end) {
+		ch1 = fgetc(fin);
+		if (feof(fin)) { 		//если считан список конца файла
+			end = 1;
+		}
+								//если текущий символ - не разделитель (знак или конец строки, табуляция)
+		if (strchr(" .,!?:;\n\r\t", ch1) == 0 && !end) { //т.е. не найдены эти символы
+								//то пока текущий символ удовлетворяет этому условию
+		i = 0; 				    //обнуляем индекс текущего символа в слове
+		createWord (ch1, fin, i, end, slovo);
+		//слово создано, обработаем его
+		obrabotka (slovo);
+		col++; 					//инкрементируем количество считанных слов
+		/*формируем и выводим фразу, содержащую номер слова и само слово*/
+		fprintf(fout, "%3d %s\n", col, slovo); //записываем в файл
+		slovo[0] = '\0'; 		//очищаем slovo
+		}
+		return findEndl(ch1, fin, fout, i, end, slovo, col);
+	}
+	else return;
+}
+
+//меняем строку
+void changeStr (FILE *fin, FILE *fout){
+	char ch = ' ';   //текущий символ
+	int col = 0;      //количество считанных слов
+	char slovo[MAXLEN+1] = "";   //слово
+	int i, end = 0; //i - индект текущего символа в slovo; end - показатель конца файла
+
+	findEndl (ch, fin, fout, i, end, slovo, col);
+	fclose(fin);
+    fclose(fout);
+}
+
+int main(int argc, char* argv[]) {
+	SetConsoleOutputCP(1251);
+	FILE* vhod, *vihod, *vihod1;
+	if (argc == 4) { // три параметра: путь+имя запущенного файла и два имени текстовых фалов
+		if ((vhod = fopen(argv[1], "rt"))) {
+			if ((vihod = fopen(argv[2], "wt"))) {
+				createStr (vhod, vihod);
+				vhod = fopen(argv[1], "r+t");
+				vihod1 = fopen(argv[3], "w+t");
+				changeStr (vhod, vihod1);
+			}
+			else {
+				printf("Errror: Ошибка при открытии файла %s для записи\nPress any key", argv[2]);
+				getch(); // ожидание нажатия клавиши
+			}
+		}
+		else {
+			printf("Errror: Ошибка при открытии файла %s для чтения\nPress any key", argv[1]);
+			getch(); // ожидание нажатия клавиши
+		}
+	}
+	else {
+		printf("Error: Вы забыли передать имена файлов\nPress any key to continue...");
+		getch();
+	}
+    getch();
+	return 0;
+}
+
