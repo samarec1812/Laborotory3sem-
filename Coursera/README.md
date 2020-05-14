@@ -14,7 +14,3 @@
         <img src="https://github.com/samarec1812/Laborotory3sem/Coursera/img/blob/master/coursera_c++.jpg">
     </a>
 </p>
-<p align="center">
-  <img src="coursera_c++" width="350" title="hover text">
-  <img src="coursera_c++" width="350" alt="accessibility text">
-</p>
