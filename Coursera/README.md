@@ -1,4 +1,5 @@
-# [Специализация Основы разработки на современном C++](https://www.coursera.org/specializations/c-plus-plus-modern-development/) by Moscow Institute of Physics and Technology & Yandex
+# [Специализация Основы разработки на современном C++](https://www.coursera.org/specializations/c-plus-plus-modern-development/)
+# by Moscow  Institute of Physics and Technology & Yandex
 
 ### Состоит из 5 курсов
 
@@ -8,4 +9,8 @@
 #### - Основы разработки на C++: коричневый пояс
 #### - Основы разработки на C++: чёрный пояс
 
-<png> = 
+<p>
+    <a href="https://www.coursera.org/specializations/c-plus-plus-modern-development/">
+        <img src="https://github.com/VulpesCorsac/Coursera-Modern-C-plus-plus-development/blob/master/Logo.jpg">
+    </a>
+</p>
