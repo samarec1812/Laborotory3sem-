@@ -1,4 +1,4 @@
-# Искусство разработки на современном С++ (Специализация)
+# [Специализация Основы разработки на современном C++](https://www.coursera.org/specializations/c-plus-plus-modern-development/) by Moscow Institute of Physics and Technology & Yandex
 
 ### Состоит из 5 курсов
 
@@ -8,3 +8,4 @@
 #### - Основы разработки на C++: коричневый пояс
 #### - Основы разработки на C++: чёрный пояс
 
+<png> = 
