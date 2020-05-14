@@ -11,6 +11,6 @@
 
 <p>
     <a href="https://www.coursera.org/specializations/c-plus-plus-modern-development">
-        <img src="https://github.com/samarec1812/Laborotory3sem/Coursera/img/coursera_c++.jpg">
+        <img src="https://github.com/samarec1812/Laborotory3sem/Coursera/img/blob/master/coursera_c++.jpg">
     </a>
 </p>
