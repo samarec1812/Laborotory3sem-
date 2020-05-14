@@ -11,6 +11,6 @@
 
 <p>
     <a href="https://habrastorage.org/web/86b/774/1cd/86b7741cd7184769906f89ee93a20b87.jpg>
-        <img src="https://github.com/VulpesCorsac/Coursera-Modern-C-plus-plus-development/blob/master/Logo.jpg">
+        <img src="https://github.com/samarec1812/Laborotory3sem/Coursera/img/coursera_c++.jpg">
     </a>
 </p>
