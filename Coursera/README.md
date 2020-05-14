@@ -10,7 +10,7 @@
 #### - Основы разработки на C++: чёрный пояс
 
 <p>
-    <a href="https://www.coursera.org/specializations/c-plus-plus-modern-development/">
+    <a href="https://habrastorage.org/web/86b/774/1cd/86b7741cd7184769906f89ee93a20b87.jpg>
         <img src="https://github.com/VulpesCorsac/Coursera-Modern-C-plus-plus-development/blob/master/Logo.jpg">
     </a>
 </p>
