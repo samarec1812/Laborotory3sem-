@@ -9,8 +9,4 @@
 #### - Основы разработки на C++: коричневый пояс
 #### - Основы разработки на C++: чёрный пояс
 
-<p>
-    <a href="https://www.coursera.org/specializations/c-plus-plus-modern-development">
-        <img src="https://github.com/samarec1812/Laborotory3sem/Coursera/img/blob/master/coursera_c++.jpg">
-    </a>
-</p>
+![coursera_c++](https://user-images.githubusercontent.com/44061702/81955677-13442700-9613-11ea-97b4-78871044c330.jpg)
