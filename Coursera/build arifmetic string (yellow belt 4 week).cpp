@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <deque>
+#include <algorithm>
+
+using namespace std;
+
+struct Operation {
+    char type = 0;
+    int number = 0;
+};
+
+int main() {
+    int num;
+    cin >> num;
+
+    int number_of_operations;
+    cin >> number_of_operations;
+    vector<Operation> operations(number_of_operations);  // (*)
+    for (int i = 0; i < number_of_operations; ++i) {
+        cin >> operations[i].type;
+        cin >> operations[i].number;
+    }
+
+    deque<string> deq;
+    deq.push_back(to_string(num));
+    for (const auto& operation : operations) {
+        deq.push_front("(");
+        deq.push_back(") ");
+        deq.push_back(string(1, operation.type));
+        deq.push_back(" ");
+        deq.push_back(to_string(operation.number));
+    }
+
+    for (const auto& w : deq) {
+        cout << w;
+    }
+
+    return 0;
+}
