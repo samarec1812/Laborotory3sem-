@@ -1,0 +1,1 @@
+select * from goods where id in (select goods_id from tags_goods group by goods_id having count(goods_id) = (select count(id) from tags));
